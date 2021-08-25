@@ -10,14 +10,10 @@ var MessageSchema = new mongoose.Schema({
         required: true
     },
     from: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        type: String,
         required: true
     },
-    to: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }
+    to: String
 });
 
 var Message = mongoose.model('Message', MessageSchema);

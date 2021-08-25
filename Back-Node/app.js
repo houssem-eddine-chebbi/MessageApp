@@ -7,7 +7,6 @@ const cors = require('cors');
 var { mongoose } = require('./configuration/db/mongoose');
 
 const messagesRouter = require('./routes/messages');
-const usersRouter = require('./routes/users');
 
 const app = express();
 
@@ -20,7 +19,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
-app.use('/api/users', require('./routes/users'));
 app.use('/api/messages', require('./routes/messages'));
 
 // catch 404 and forward to error handler
