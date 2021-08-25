@@ -1,12 +1,14 @@
 import {AppBar, Grid, Tab, Tabs} from "@material-ui/core";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import TabPanel from "./TabPanel";
 import ListMessages from "./ListMessages";
 import PrivateMessages from "./PrivateMessages";
+import {useUserMessages} from "../hooks/useUserMessages";
 
 
 export default () => {
   const [tab, setTab] = useState(0);
+  const messages = useUserMessages();
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setTab(newValue);
