@@ -1,5 +1,6 @@
 import {Grid, makeStyles, Paper, TextField, Typography} from "@material-ui/core";
 import ChatIcon from '@material-ui/icons/Chat';
+import {useDisplayNameContext} from "../Contexts/UserContext";
 
 const useLoginStyles = makeStyles({
   container: { width: '100%', height: '100%' },
@@ -12,6 +13,7 @@ const useLoginStyles = makeStyles({
 })
 
 export default () => {
+  const { displayName, setDisplayName } = useDisplayNameContext()
   const { container, item, paper, textField, title, icone, center } = useLoginStyles({})
 
   return (
@@ -22,7 +24,14 @@ export default () => {
             Messages App
           </Typography>
           <Grid item className={center} ><ChatIcon className={icone} /></Grid>
-          <TextField className={textField} id="outlined-basic" label="Enter your display Name" variant="outlined" />
+          <TextField
+            className={textField}
+            id="outlined-basic"
+            label="Enter your display Name"
+            variant="outlined"
+            value={displayName}
+            onChange={e => {setDisplayName && setDisplayName(e.target.value)}}
+          />
         </Paper>
       </Grid>
     </Grid>
