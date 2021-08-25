@@ -4,6 +4,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 
+var { mongoose } = require('./configuration/db/mongoose');
+
 const messagesRouter = require('./routes/messages');
 const usersRouter = require('./routes/users');
 
