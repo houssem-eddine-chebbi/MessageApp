@@ -8,7 +8,7 @@ const useLoginStyles = makeStyles({
   paper: { padding: 24 },
   textField: { width: '100%' },
   title: { textAlign: 'center' },
-  icone: { width: 250, height: 250, color: 'red' },
+  icone: { width: 250, height: 250 },
   center: { margin: 'auto', padding: '0 50px' },
 })
 
@@ -23,7 +23,7 @@ export default () => {
           <Typography variant="h4" className={title} gutterBottom>
             Messages App
           </Typography>
-          <Grid item className={center} ><ChatIcon className={icone} /></Grid>
+          <Grid item className={center} ><ChatIcon className={icone} color={"secondary"} /></Grid>
           <TextField
             className={textField}
             id="outlined-basic"

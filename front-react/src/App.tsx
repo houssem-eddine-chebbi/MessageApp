@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Login from "./Components/Login";
 import {DisplayNameProvider} from "./Contexts/UserContext";
+import Messages from "./Components/Messages";
 
 function App() {
 
