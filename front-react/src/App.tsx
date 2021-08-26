@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
 import Login from "./Components/Login";
 import {DisplayNameProvider} from "./Contexts/UserContext";
 import Messages from "./Components/Messages";
@@ -15,6 +15,9 @@ function App() {
               <Switch>
                 <Route path="/login" ><Login /></Route>
                 <Route path="/messages" ><Messages /></Route>
+                <Route path="" >
+                  <Redirect to={"/login"} />
+                </Route>
               </Switch>
             </BrowserRouter>
         </MessagesProvider>
