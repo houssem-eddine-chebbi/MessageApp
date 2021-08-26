@@ -2,11 +2,23 @@ var express = require('express');
 var router = express.Router();
 const {Message} = require('../models/Message');
 
-router.get('/', (req, res, next) => {
+router.get('/privatemessages', (req, res, next) => {
   const {displayName} = req.query
 
-  Message.find({from: displayName}).or({to: displayName})
-      .then(messages => res.json({ messages }))
+  Message.find({$or: [{from: displayName}, {to: displayName}]})
+      .then(messages => {
+          console.log(messages.length)
+
+          return res.json({ messages })
+      })
+      .catch(err => res.status(400).send(err))
+});
+
+router.get('/publicmessages', (req, res, next) => {
+  Message.find({private: false})
+      .then(messages => {
+        return res.json({ messages })
+      })
       .catch(err => res.status(400).send(err))
 });
 

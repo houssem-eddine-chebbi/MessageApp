@@ -7,13 +7,14 @@ import produce from "immer";
 
 const AddMessage = () => {
   const { displayName } = useDisplayNameContext()
-  const [message, setMessage] = useState<Message>({ body: '', private: false, from: displayName});
+  const emptyMessage = { body: '', private: false, from: displayName}
+  const [message, setMessage] = useState<Message>(emptyMessage);
   const [error, setError] = useState('');
   const { actions } = useMessagesContext()
 
   return (
     <Grid item container style={{ padding: '24px 58px', width: '100%' }}>
-      { error && <Typography>{error}</Typography> }
+      { error && <Grid container ><Typography color={"secondary"}>{error}</Typography></Grid> }
       <Grid item sm={10} style={{  paddingRight: 24 }}>
         <TextField
           style={{ width: "100%" }}
@@ -30,8 +31,9 @@ const AddMessage = () => {
       <Grid item sm={2} >
         <Grid container>
           <Button variant="contained" color="secondary" style={{ width: '100%' }} onClick={e => {
-            if (message.private && message.to === '') setError('please select a recipient')
-            else actions?.postMessage(message)
+            if (message.private && !message.to) return setError('please select a recipient')
+            actions?.postMessage(message)
+            setMessage(emptyMessage)
           }}>
             Send
           </Button>

@@ -1,5 +1,6 @@
-import {Grid, makeStyles, Paper, TextField, Typography} from "@material-ui/core";
+import {Button, Grid, makeStyles, Paper, TextField, Typography} from "@material-ui/core";
 import ChatIcon from '@material-ui/icons/Chat';
+import { useHistory } from "react-router-dom";
 import {useDisplayNameContext} from "../Contexts/UserContext";
 
 const useLoginStyles = makeStyles({
@@ -10,11 +11,13 @@ const useLoginStyles = makeStyles({
   title: { textAlign: 'center' },
   icone: { width: 250, height: 250 },
   center: { margin: 'auto', padding: '0 50px' },
+  submit: { margin: '12px auto'}
 })
 
 export default () => {
   const { displayName, setDisplayName } = useDisplayNameContext()
-  const { container, item, paper, textField, title, icone, center } = useLoginStyles({})
+  const { container, item, paper, textField, title, icone, center, submit } = useLoginStyles({})
+  const history = useHistory()
 
   return (
     <Grid container className={container}>
@@ -33,6 +36,9 @@ export default () => {
             value={displayName}
             onChange={e => {setDisplayName && setDisplayName(e.target.value)}}
           />
+          <Button className={submit} fullWidth variant="contained" color="secondary" onClick={() => history.push('/messages')}>
+            Submit
+          </Button>
         </Paper>
       </Grid>
     </Grid>
