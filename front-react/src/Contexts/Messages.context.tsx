@@ -7,7 +7,7 @@ import {dispatchMiddleware} from "./Messages.middleware";
 
 export const initialState: MessagesContextState = {
   publicMessages: [],
-  PrivateMessages: []
+  privateMessages: []
 }
 
 const MessagesContext = createContext(initialState)

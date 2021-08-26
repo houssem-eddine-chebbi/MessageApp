@@ -3,16 +3,11 @@ import {useState} from "react";
 import TabPanel from "./TabPanel";
 import ListMessages from "./ListMessages";
 import PrivateMessages from "./PrivateMessages";
-import {useUserMessages} from "../hooks/useUserMessages";
 import AddMessage from "./AddMessage";
 
 
 export default () => {
   const [tab, setTab] = useState(0);
-  const messages = useUserMessages();
-
-  const publicMessages = messages.filter(message => !message.private)
-  const privateMessages = messages.filter(message => message.private)
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setTab(newValue);
@@ -27,10 +22,10 @@ export default () => {
         </Tabs>
       </AppBar>
       <TabPanel value={tab} index={0}>
-        <ListMessages publicMessages={publicMessages} />
+        <ListMessages />
       </TabPanel>
       <TabPanel value={tab} index={1}>
-        <PrivateMessages privateMessages={privateMessages} />
+        <PrivateMessages />
       </TabPanel>
       <AddMessage />
     </Grid>

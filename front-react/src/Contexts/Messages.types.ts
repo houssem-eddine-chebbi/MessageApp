@@ -11,17 +11,19 @@ export type Messages = Array<Message>
 export interface MessagesActions {
   getPublicMessages: () => void
   getPrivateMessages: (displayName: string) => void
+  postMessage: (message: Message) => void
 }
 
 export interface MessagesContextState {
   publicMessages: Messages
-  PrivateMessages: Messages
+  privateMessages: Messages
   actions?: MessagesActions
 }
 
 export type MessagesActionType =
   | 'GET_PUBLIC_MESSAGES'
   | 'GET_PRIVATE_MESSAGES'
+  | 'POST_MESSAGE'
 
 export interface MessageAction {
   type: MessagesActionType
@@ -29,5 +31,6 @@ export interface MessageAction {
     displayName?: string
     publicMessages?: Messages
     privateMessages?: Messages
+    message?: Message
   }
 }

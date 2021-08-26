@@ -10,4 +10,18 @@ router.get('/', (req, res, next) => {
       .catch(err => res.status(400).send(err))
 });
 
+router.post('/postmessage', (req, res, next) => {
+  const { message } = req.body
+  console.log(message)
+
+  const newMessage = new Message(message)
+  newMessage.save()
+      .then((message) => {
+        return res.json({message});
+      }).catch((err) => {
+        console.log(err)
+        return res.status(400).send(err)
+  })
+})
+
 module.exports = router;
