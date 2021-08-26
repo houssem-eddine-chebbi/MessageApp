@@ -19,7 +19,10 @@ Doc Technique:
       
       
    - Front React: 
-    Interface "login" pour prendre un DisplayName (juste front pas vraiment une authentification). tant que t'as pas renseigné un DisplayName t'es redirigé vers l'interface de login
-    Interface des message public (affiche tt les messages public)
-    Interface de message privé (liste tt les users qui t’ont envolées un msg ou l'inverse)
+    Interface "login" pour prendre un DisplayName (juste front pas vraiment une authentification). tant que t'as pas renseigné un DisplayName t'es redirigé vers l'interface de login.
+    
+    Interface des message public (affiche tt les messages public).
+    
+    Interface de message privé (liste tt les users qui t’ont envolées un msg ou l'inverse).
+    
     la possibilité d'envoiyer un msg public ou privé.
