@@ -25,6 +25,7 @@ export default () => {
           </Typography>
           <Grid item className={center} ><ChatIcon className={icone} color={"secondary"} /></Grid>
           <TextField
+            color={"secondary"}
             className={textField}
             id="outlined-basic"
             label="Enter your display Name"

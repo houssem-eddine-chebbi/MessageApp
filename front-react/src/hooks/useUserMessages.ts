@@ -1,22 +1,17 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDisplayNameContext} from "../Contexts/UserContext";
-import Axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import Axios from 'axios'
+import {Messages} from "../Contexts/Messages.types";
 
-interface Message {
-  body: string
-  private: boolean
-  to?: string
-  from: string
-}
-
-type Messages = Array<Message>
 
 export const useUserMessages = (): Messages => {
   const { displayName } = useDisplayNameContext()
   const [messages, setMessages] = useState<Messages>([])
 
-  Axios.get(`http://localhost:3000/api/messages?displayName=${displayName}`)
-    .then(response => setMessages(response.data.messages))
+  useEffect(() => {
+    Axios.get(`http://localhost:5555/api/messages?displayName=${displayName}`)
+      .then(response => setMessages(response.data.messages))
+  }, [])
 
   return messages
 }
